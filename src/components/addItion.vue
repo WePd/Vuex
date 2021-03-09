@@ -5,6 +5,7 @@
         </h3>
         <button @click="btnHandleAdd">+</button>
         <button @click="btnHandleAddN">+n</button>
+        <button @click="btnHandleAddN1">+5 async</button>
     </div>
 </template>
 
@@ -25,7 +26,11 @@ export default {
        },
        btnHandleAddN(){
            this.$store.commit('addN', 5)
-       }
+       },
+       //异步让count自增
+        btnHandleAddN1(){
+            this.$store.dispatch('addAsync', 5)
+        }
     }
 }
 </script>

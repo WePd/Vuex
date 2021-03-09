@@ -5,11 +5,15 @@
         </h3>
         <button @click="btnHandleDecreament">-</button>
         <button @click="btnHandleDecreament1">-n</button>
+        <button @click="subNAsync(5)">-n Async</button>
+        <h3>
+            {{ $store.getters.showNumber }}
+        </h3>
     </div>
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
     data(){
@@ -20,6 +24,7 @@ export default {
     },
     methods: {
         ...mapMutations(['decr', 'decrN']),
+        ...mapActions(['subNAsync']),
 
         btnHandleDecreament(){
             // this.$store.commit('decr')
@@ -27,7 +32,7 @@ export default {
         },
         btnHandleDecreament1(){
             this.decrN(5)
-        }
+        },
     }
 } 
 </script>

@@ -24,7 +24,22 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    addAsync(context, step){
+      setTimeout(() => {
+        context.commit('addN', step)
+      }, 1000);
+    },
+    subNAsync(context, step){
+      setTimeout(() => {
+        context.commit('decrN', step)
+      }, 1000); 
+    },
   },
   modules: {
+  },
+  getters: {
+    showNumber(state){
+      return '现在的值是' + state.count++
+    }
   }
 })
