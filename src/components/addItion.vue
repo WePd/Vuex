@@ -3,7 +3,8 @@
         <h3>
             当前最新的count值为: {{ count }}
         </h3>
-        <button>+</button>
+        <button @click="btnHandleAdd">+</button>
+        <button @click="btnHandleAddN">+n</button>
     </div>
 </template>
 
@@ -16,6 +17,15 @@ export default {
         count(){
             return this.$store.state.count
         }
+    },
+    methods: {
+       btnHandleAdd(){
+           //触发mutations的第一种方式
+           this.$store.commit('add')
+       },
+       btnHandleAddN(){
+           this.$store.commit('addN', 5)
+       }
     }
 }
 </script>
