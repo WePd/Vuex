@@ -1,24 +1,24 @@
 <template>
-<div>
-  <my-addItion></my-addItion>
-  <h3>-------------------------</h3>
-  <my-subtraction></my-subtraction>
-</div>
+  <div>
+    <span>{{ message }}</span>
+    <span>{{ tip }}</span>
+  </div>
 </template>
 
 <script>
-import addItion from './components/addItion'
-import subtraction from './components/subtraction'
+import axios from "axios"
 
 export default {
-  data(){
+  data() {
     return {
-
+      message: "",
+      tip: process.env,
     }
   },
-  components: {
-    'my-addItion': addItion,
-    'my-subtraction': subtraction 
-  }
+  mounted() {
+    axios.post("/api/login").then((res) => {
+      this.message = res.data.data.string
+    })
+  },
 }
 </script>
